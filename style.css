@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+.fbutton {
+    margin-top: 450px;
+    border: none;
+    background-image: url('images/buttons.jpg');
+    width: 270px;
+    height: 42px;
+    flex-shrink: 0;
+    
+}
+.fbutton img {
+    width: 16px;
+    height: 16px;
+}
+.fbutton:hover {
+    transform: scale(1.02);
+}
+
+button {
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 70px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family:"Nunito Sans";
+    transition: 0.1s;
+}
+body {
+    font-family:"Nunito Sans";
+    color:#FFFFFF;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #070707;
+    
+}
+.wallet-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 375px;
+    height: 812px;
+    max-width: 100%;
+    border:1px white solid;
+    border-radius:20px;
+    background-image:
+    linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
+    ),
+    url("images/background.jpg");
+    padding: 50px 20px;
+    text-align: center;
+
+
+}
+.wallet-card p {
+  margin: 0;
+}
+
+.wallet-card .security-description {
+    margin-top: -18px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
