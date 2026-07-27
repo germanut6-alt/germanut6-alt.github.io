@@ -4,7 +4,7 @@ telegramApp.ready();
 telegramApp.expand();
 
 
-const allowedUserId = 927508173927508173;
+const allowedUserId = 927508173;
 const currentUserId = telegramApp.initDataUnsafe.user?.id;
 
 telegramApp.showAlert(
