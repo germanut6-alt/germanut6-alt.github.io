@@ -43,14 +43,26 @@ connectButton.addEventListener("click", function () {
     tonConnectUI.openModal();
 });
 
-tonConnectUI.onStatusChange(function (wallet) {
+function updateWalletScreen(wallet) {
     if (wallet) {
         connectButton.textContent = "Wallet connected";
         showUsernameScreen();
     } else {
-        connectButton.textContent = "TON Connect";
+        connectButton.textContent = "Connect TON";
         showConnectScreen();
     }
+}
+
+tonConnectUI.onStatusChange(
+    updateWalletScreen,
+
+    function (error) {
+        console.error("TON Connect error:", error);
+    }
+);
+
+tonConnectUI.connectionRestored.then(function () {
+    updateWalletScreen(tonConnectUI.wallet);
 });
 
 const usernameInput = document.querySelector("#username-input");
