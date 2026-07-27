@@ -2,7 +2,9 @@
 <html lang="eng">
     <!-- название страницы -->
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- подключение к стайл.ксс -->
+     <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>SMP Wallet</title>
@@ -10,17 +12,21 @@
     <!--внутрености-->
   <body>
     <main class="wallet-card">
-      <!--h1=заголовк -->
+
+      <div class="wallet-content">
+
       <h1 class="wallet-name">SMP Wallet</h1>
-      <!--p=параграф/простотекст -->
-      <p class="first-description">Fast transfers + Perfect design = SMP Wallet</p>
-      <p class="second-description">Transfer through Username</p>
-      <!--button=кнопка -->
+
+      <p class="first-description">Send TON by @username</p>
+      <p class="second-description">Connect your wallet to continue</p>
+      </div>
+
+      <div class="wallet-actions">
       <button class="fbutton">Connect TON</button>
       <p class="security-description">We do not store seed phrases or private keys.</p>
+      </div>
     </main>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-        <script src="script.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
