@@ -30,10 +30,9 @@
     width: 16px;
     height: 16px;
 }
-@media(hover:hover) {
+@media (hover:hover) {
     .fbutton:hover {
         transform: scale(1.02);
-        transition: 0.2s;
         filter: brightness(1.05);
     }
 }
@@ -41,7 +40,6 @@
     transform: scale(0.98);
     filter: brightness(0.95);
 }
-
 .wallet-content {
     margin-top: 25px;
 }
