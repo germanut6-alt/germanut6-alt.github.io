@@ -41,9 +41,41 @@ tonConnectUI.onStatusChange(function (wallet) {
 });
 
 const usernameInput = document.querySelector("#username-input");
+const usernameError = document.querySelector("#username-error");
+
+const takenUsernames = ["admin", "support", "smp"];
 
 usernameInput.addEventListener("input", function () {
-    usernameInput.value = usernameInput.value
+    const enteredUsername = usernameInput.value;
+
+    const cleanedUsername = enteredUsername
         .toLowerCase()
         .replace(/[^a-z0-9_]/g, "");
+
+    usernameInput.value = cleanedUsername;
+
+    if (enteredUsername.toLowerCase() !== cleanedUsername) {
+        usernameError.textContent =
+            "Only English letters, numbers and _ are allowed";
+        return;
+    }
+
+    if (cleanedUsername.length === 0) {
+        usernameError.textContent = "";
+        return;
+    }
+
+    if (cleanedUsername.length < 3) {
+        usernameError.textContent =
+            "Username must contain at least 3 characters";
+        return;
+    }
+
+    if (takenUsernames.includes(cleanedUsername)) {
+        usernameError.textContent =
+            "This username is already taken";
+        return;
+    }
+
+    usernameError.textContent = "";
 });
