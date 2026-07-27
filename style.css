@@ -5,6 +5,9 @@
 
 
 .fbutton {
+    filter:brightness(1);
+    transition:transform 0.2s, filter 0.2s;
+    -webkit-tap-highlight-color: transparent;
     border: none;
     background-image: url('images/buttons.jpg');
     width: 100%;
@@ -36,8 +39,7 @@
 
 .fbutton:active {
     transform: scale(0.98);
-    filter: brightness(0.9);
-    transition: 0.2s;
+    filter: brightness(0.95);
 }
 
 .wallet-content {
