@@ -7,6 +7,10 @@ telegramApp.expand();
 const allowedUserId = 927508173;
 const currentUserId = telegramApp.initDataUnsafe.user?.id;
 
+telegramApp.showAlert(
+    "Current ID: " + String(currentUserId)
+);
+
 if (currentUserId !== allowedUserId) {
     document.body.innerHTML = `
         <main>
