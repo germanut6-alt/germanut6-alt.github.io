@@ -8,7 +8,7 @@
     border: none;
     background-image: url('images/buttons.jpg');
     width: 320px;
-    height: 60px;
+    height: 50px;
     flex-shrink: 0;
     font-size: 20px;
     font-weight: 700;
@@ -24,6 +24,10 @@
 }
 .fbutton:hover {
     transform: scale(1.02);
+}
+
+.wallet-content {
+    margin-top: 50px;
 }
 
 
