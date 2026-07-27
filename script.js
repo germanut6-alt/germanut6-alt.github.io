@@ -6,12 +6,11 @@ telegramApp.expand();
 
 const allowedUserId = 927508173;
 const currentUserId = telegramApp.initDataUnsafe.user?.id;
-
-telegramApp.showAlert(
-    "Current ID: " + String(currentUserId)
-);
-
-if (currentUserId !== allowedUserId) {
+const isLocalDevelopment =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost" ||
+    window.location.hostname.startsWith("192.168.");
+if (!isLocalDevelopment && currentUserId !== allowedUserId) {
     document.body.innerHTML = `
         <main>
             <h1>Access denied</h1>
@@ -39,4 +38,12 @@ tonConnectUI.onStatusChange(function (wallet) {
     } else {
         connectButton.textContent = "TON Connect";
     }
+});
+
+const usernameInput = document.querySelector("#username-input");
+
+usernameInput.addEventListener("input", function () {
+    usernameInput.value = usernameInput.value
+        .toLowerCase()
+        .replace(/[^a-z0-9_]/g, "");
 });
