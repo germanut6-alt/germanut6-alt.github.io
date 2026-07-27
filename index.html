@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="eng">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
@@ -8,7 +8,7 @@
     <title>SMP Wallet</title>
   </head>
   <body>
-    <main class="wallet-card connect-screen">
+    <main class="wallet-card connect-screen" hidden>
       <div class="wallet-content">
       <h1 class="wallet-name">SMP Wallet</h1>
       <p class="first-description">Send TON by @username</p>
@@ -19,7 +19,28 @@
       <p class="security-description">We do not store seed phrases or private keys.</p>
       </div>
     </main>
-    <main class="wallet-card username-screen" hidden>
+    <main class="wallet-card username-screen">
+      <div class="username-content">
+      <h1 class="username-head">Set a unique username</h1>
+      <p class="username-desc">You will be able to transfer funds using your Username.</p>
+      </div>
+      <div class="username-field">
+      <label class="username-label" for="username-input">Username</label>
+      <div class="username-input-box">
+        <span class="username-prefix">@ |</span>
+        <input
+          class="username-input"
+          id="username-input"
+          name="username"
+          type="text"
+          placeholder="username"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          >
+          </div>
+      </div>
+      <button class="cont-button" type="button">Continue</button>
 
     </main>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
