@@ -27,6 +27,17 @@ const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
 });
 
 const connectButton = document.querySelector(".fbutton");
+const connectScreen = document.querySelector(".connect-screen");
+const usernameScreen = document.querySelector(".username-screen");
+function showConnectScreen() {
+    connectScreen.hidden = false;
+    usernameScreen.hidden = true;
+}
+
+function showUsernameScreen() {
+    connectScreen.hidden = true;
+    usernameScreen.hidden = false;
+}
 
 connectButton.addEventListener("click", function () {
     tonConnectUI.openModal();
@@ -35,8 +46,10 @@ connectButton.addEventListener("click", function () {
 tonConnectUI.onStatusChange(function (wallet) {
     if (wallet) {
         connectButton.textContent = "Wallet connected";
+        showUsernameScreen();
     } else {
         connectButton.textContent = "TON Connect";
+        showConnectScreen();
     }
 });
 

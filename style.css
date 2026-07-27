@@ -136,6 +136,9 @@ body {
 
 
 /* все экран 2 тут--------------------------------------------------------------------------------- */
+.username-desc {
+    color: rgba(255, 255, 255, 0.8)
+}
 .username-head {
     margin: 0;
 }
@@ -225,11 +228,12 @@ body {
     padding-left: 10px;
     outline: 1.5px solid rgba(88, 88, 88, 0.7);
 }
-.username-input-box:focus-within {
-    color: rgba(255, 255, 255, 1)
+.username-prefix {
+    transition: 0.2s;
 }
-.username-input-box:active {
-    transform: scale(0.98);
+.username-input-box:focus-within .username-prefix,
+.username-input-box:has(.username-input:not(:placeholder-shown)) .username-prefix {
+    color: rgba(255, 255, 255, 1)
 }
 @media (hover:hover) {
     .username-input-box:hover {
