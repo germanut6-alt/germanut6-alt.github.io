@@ -7,8 +7,8 @@
 .fbutton {
     border: none;
     background-image: url('images/buttons.jpg');
-    width: 300px;
-    height: 50px;
+    width: 320px;
+    height: 60px;
     flex-shrink: 0;
     font-size: 20px;
     font-weight: 700;
