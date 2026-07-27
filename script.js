@@ -3,11 +3,8 @@ const telegramApp = window.Telegram.WebApp;
 telegramApp.ready();
 telegramApp.expand();
 
-telegramApp.showAlert(
-    "927508173" + telegramApp.initDataUnsafe.user.id
-);
 
-const allowedUserId = "927508173";
+const allowedUserId = 927508173;
 const currentUserId = telegramApp.initDataUnsafe.user?.id;
 
 if (currentUserId !== allowedUserId) {
