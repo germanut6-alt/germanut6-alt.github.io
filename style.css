@@ -7,7 +7,8 @@
 .fbutton {
     border: none;
     background-image: url('images/buttons.jpg');
-    width: 320px;
+    width: 100%;
+    max-width: 300px;
     height: 50px;
     flex-shrink: 0;
     font-size: 20px;
@@ -15,7 +16,11 @@
     border-radius: 14px;
     color: rgba(255, 255, 255, 0.8);
     font-family:"Nunito Sans";
-    transition: 0.1s;
+    transition: 0.2s;
+}
+.fbutton:focus-visible {
+    outline: 1px solid rgba(122, 213, 255, 0.8);
+    outline-offset: 0.5px;
     
 }
 .fbutton img {
@@ -24,15 +29,20 @@
 }
 .fbutton:hover {
     transform: scale(1.02);
+    filter: brightness(1.05);
+    cursor: pointer;
+}
+
+.fbutton:active {
+    transform: scale(0.98);
+    filter: brightness(0.9);
 }
 
 .wallet-content {
-    margin-top: 50px;
+    margin-top: 25px;
 }
-
-
-
 body {
+    user-select: none;
     font-family:"Nunito Sans";
     color:#FFFFFF;
     min-height: 100%;
@@ -43,9 +53,7 @@ body {
     padding: 24px;
     background: #070707;
     margin: 0;
-    
 }
-
 .wallet-content,
 .wallet-actions {
     display: flex;
@@ -56,25 +64,31 @@ body {
 }
 .wallet-actions {
     margin-top: auto;
+    gap: 4px;
 }
 .first-description {
     font-size: 18px;
     font-weight: 700;
     line-height: 1.4;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
 }
 .second-description {
     font-size: 16px;
     font-weight: 650;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
 }
 .wallet-card .security-description {
-    margin-top: -18px;
+    margin-top: 0;
     font-size: 10px;
     color: rgba(255, 255, 255, 0.8);
 }
-
-
+.wallet-name {
+    letter-spacing: -1.5px;
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+}
 .wallet-card {
     display: flex;
     flex-direction: column;
@@ -102,14 +116,13 @@ body {
 @media (max-width: 600px) {
     body {
         padding: 0;
-        min-height: 100dvh;
+        min-height: var(--tg-viewport-stable-height, 100dvh);
     }
-
     .wallet-card {
+        min-height: var(--tg-viewport-stable-height, 100dvh);
         width: 100%;
         max-width: none;
         height: auto;
-        min-height: 100dvh;
         border: none;
         border-radius: 0;
     }
