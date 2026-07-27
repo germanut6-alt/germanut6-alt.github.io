@@ -29,6 +29,7 @@
 }
 .fbutton:hover {
     transform: scale(1.02);
+    transition: 0.2s;
     filter: brightness(1.05);
     cursor: pointer;
 }
@@ -36,6 +37,7 @@
 .fbutton:active {
     transform: scale(0.98);
     filter: brightness(0.9);
+    transition: 0.2s;
 }
 
 .wallet-content {
