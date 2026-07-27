@@ -2,7 +2,23 @@ const telegramApp = window.Telegram.WebApp;
 
 telegramApp.ready();
 telegramApp.expand();
+function updateViewportHeight() {
+    const currentHeight =
+        telegramApp.viewportStableHeight || window.innerHeight;
 
+    document.documentElement.style.setProperty(
+        "--app-height",
+        currentHeight + "px"
+    );
+}
+
+updateViewportHeight();
+
+telegramApp.onEvent("viewportChanged", function (event) {
+    if (event.isStateStable) {
+        updateViewportHeight();
+    }
+});
 
 const allowedUserId = 927508173;
 const currentUserId = telegramApp.initDataUnsafe.user?.id;
@@ -67,6 +83,7 @@ tonConnectUI.connectionRestored.then(function () {
 
 const usernameInput = document.querySelector("#username-input");
 const usernameError = document.querySelector("#username-error");
+const continueButton = document.querySelector(".cont-button");
 
 const takenUsernames = ["admin", "support", "smp"];
 
@@ -76,7 +93,7 @@ usernameInput.addEventListener("input", function () {
     const cleanedUsername = enteredUsername
         .toLowerCase()
         .replace(/[^a-z0-9_]/g, "");
-
+    continueButton.disabled = true;
     usernameInput.value = cleanedUsername;
 
     if (enteredUsername.toLowerCase() !== cleanedUsername) {
@@ -101,6 +118,6 @@ usernameInput.addEventListener("input", function () {
             "This username is already taken";
         return;
     }
-
+    continueButton.disabled = false;
     usernameError.textContent = "";
 });
