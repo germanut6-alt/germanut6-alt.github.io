@@ -5,8 +5,9 @@
 
 
 .fbutton {
+    cursor: pointer;
     filter:brightness(1);
-    transition:transform 0.2s, filter 0.2s;
+    transition:transform 0.2s ease, filter 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     border: none;
     background-image: url('images/buttons.jpg');
@@ -19,7 +20,6 @@
     border-radius: 14px;
     color: rgba(255, 255, 255, 0.8);
     font-family:"Nunito Sans";
-    transition: 0.2s;
 }
 .fbutton:focus-visible {
     outline: 1px solid rgba(122, 213, 255, 0.8);
@@ -30,13 +30,13 @@
     width: 16px;
     height: 16px;
 }
-.fbutton:hover {
-    transform: scale(1.02);
-    transition: 0.2s;
-    filter: brightness(1.05);
-    cursor: pointer;
+@media(hover:hover) {
+    .fbutton:hover {
+        transform: scale(1.02);
+        transition: 0.2s;
+        filter: brightness(1.05);
+    }
 }
-
 .fbutton:active {
     transform: scale(0.98);
     filter: brightness(0.95);
