@@ -3,12 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=7">
     <meta charset="UTF-8">
     <title>SMP Wallet</title>
   </head>
   <body>
-    <main class="wallet-card connect-screen">
+    <main class="wallet-card connect-screen" hidden>
       <div class="wallet-content">
       <h1 class="wallet-name">SMP Wallet</h1>
       <p class="first-description">Send TON by @username</p>
@@ -42,9 +42,22 @@
           <p class="username-error" id="username-error"></p>
       </div>
       <button class="cont-button" type="button" disabled>Continue</button>
-
+    </main>
+    <main class="wallet-card main-menu" hidden>
+      <div class="wallet-balance-card">
+        <p class="wallet-balance">$0.00</p>
+      </div>
+      <p class="wallet-assets">Assets</p>
+      <div class="assets"></div>
+      <p class="wallet-history">History</p>
+      <div class="history"></div>
+      <div class="buttons">
+        <button class="home-button active" type="button">Home</button>
+        <button class="send-button" type="button">Send</button>
+        <button class="receive-button" type="button">Receive</button>
+      </div>
     </main>
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=7"></script>
   </body>
 </html>

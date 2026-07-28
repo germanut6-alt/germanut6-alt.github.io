@@ -45,14 +45,24 @@ const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
 const connectButton = document.querySelector(".fbutton");
 const connectScreen = document.querySelector(".connect-screen");
 const usernameScreen = document.querySelector(".username-screen");
+const mainMenuScreen = document.querySelector(".main-menu");
+
 function showConnectScreen() {
     connectScreen.hidden = false;
     usernameScreen.hidden = true;
+    mainMenuScreen.hidden = true;
 }
 
 function showUsernameScreen() {
     connectScreen.hidden = true;
     usernameScreen.hidden = false;
+    mainMenuScreen.hidden = true;
+}
+
+function showMainMenuScreen() {
+    connectScreen.hidden = true;
+    usernameScreen.hidden = true;
+    mainMenuScreen.hidden = false;
 }
 
 connectButton.addEventListener("click", function () {
@@ -60,6 +70,11 @@ connectButton.addEventListener("click", function () {
 });
 
 function updateWalletScreen(wallet) {
+    if (isLocalDevelopment) {
+        showMainMenuScreen();
+        return;
+    }
+
     if (wallet) {
         connectButton.textContent = "Wallet connected";
         showUsernameScreen();
@@ -120,4 +135,24 @@ usernameInput.addEventListener("input", function () {
     }
     continueButton.disabled = false;
     usernameError.textContent = "";
+});
+
+continueButton.addEventListener("click", function () {
+    if (continueButton.disabled) {
+        return;
+    }
+
+    showMainMenuScreen();
+});
+const navigationButtons =
+    document.querySelectorAll(".buttons button");
+
+navigationButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        navigationButtons.forEach(function (otherButton) {
+            otherButton.classList.remove("active");
+        });
+
+        button.classList.add("active");
+    });
 });
