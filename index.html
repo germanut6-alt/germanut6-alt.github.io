@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=12">
     <title>SMP Wallet</title>
   </head>
   <body>
+    <main class="wallet-card loading-screen">
+      <div class="loading-content" role="status" aria-live="polite">
+        <h1 class="loading-title">SMP Wallet</h1>
+        <div class="loader" aria-hidden="true"></div>
+        <p class="loading-description">Loading wallet...</p>
+      </div>
+    </main>
     <main class="wallet-card connect-screen" hidden>
       <div class="wallet-content">
       <h1 class="wallet-name">SMP Wallet</h1>
@@ -99,7 +106,7 @@
         <p class="paylink-message" id="paylink-message" aria-live="polite"></p>
       </div>
     </main>
-      <div class="buttons">
+      <div class="buttons" hidden>
         <button class="home-button active" type="button">
           <img class="nav-icon" src="images/home.png" alt="" aria-hidden="true">
           <span>home</span>
@@ -114,6 +121,6 @@
         </button>
       </div>
     <script src="https://unpkg.com/@tonconnect/ui@3.0.0/dist/tonconnect-ui.min.js"></script>
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=13"></script>
   </body>
 </html>

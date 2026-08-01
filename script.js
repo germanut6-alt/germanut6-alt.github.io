@@ -45,11 +45,13 @@ const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
 });
 
 const connectButton = document.querySelector(".fbutton");
+const loadingScreen = document.querySelector(".loading-screen");
 const connectScreen = document.querySelector(".connect-screen");
 const usernameScreen = document.querySelector(".username-screen");
 const mainMenuScreen = document.querySelector(".main-menu");
 const sendScreen = document.querySelector(".wallet-send");
 const receiveScreen = document.querySelector(".wallet-receive");
+const navigationBar = document.querySelector(".buttons");
 const navigationButtons = document.querySelectorAll(".buttons button");
 const homeNavigationButton = document.querySelector(".home-button");
 const sendNavigationButton = document.querySelector(".send-button");
@@ -63,45 +65,55 @@ function setActiveNavigation(activeButton) {
 }
 
 function showConnectScreen() {
+    loadingScreen.hidden = true;
     connectScreen.hidden = false;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = true;
     sendScreen.hidden = true;
     receiveScreen.hidden = true;
+    navigationBar.hidden = true;
 }
 
 function showUsernameScreen() {
+    loadingScreen.hidden = true;
     connectScreen.hidden = true;
     usernameScreen.hidden = false;
     mainMenuScreen.hidden = true;
     sendScreen.hidden = true;
     receiveScreen.hidden = true;
+    navigationBar.hidden = true;
 }
 
 function showMainMenuScreen() {
+    loadingScreen.hidden = true;
     connectScreen.hidden = true;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = false;
     sendScreen.hidden = true;
     receiveScreen.hidden = true;
+    navigationBar.hidden = false;
     setActiveNavigation(homeNavigationButton);
 }
 
 function showSendScreen() {
+    loadingScreen.hidden = true;
     connectScreen.hidden = true;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = true;
     sendScreen.hidden = false;
     receiveScreen.hidden = true;
+    navigationBar.hidden = false;
     setActiveNavigation(sendNavigationButton);
 }
 
 function showReceiveScreen() {
+    loadingScreen.hidden = true;
     connectScreen.hidden = true;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = true;
     sendScreen.hidden = true;
     receiveScreen.hidden = false;
+    navigationBar.hidden = false;
     setActiveNavigation(receiveNavigationButton);
 }
 
@@ -115,6 +127,10 @@ connectButton.addEventListener("click", async function () {
 
 function updateWalletScreen(wallet) {
     if (isLocalDevelopment) {
+        const previewScreen = new URLSearchParams(window.location.search).get("screen");
+        if (previewScreen === "loading") {
+            return;
+        }
         showReceiveScreen();
         return;
     }
