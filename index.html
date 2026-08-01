@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-    <link rel="stylesheet" href="style.css?v=7">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+    <link rel="stylesheet" href="style.css?v=10">
     <title>SMP Wallet</title>
   </head>
   <body>
@@ -15,7 +15,7 @@
       <p class="second-description">Connect your wallet to continue</p>
       </div>
       <div class="wallet-actions">
-      <button class="fbutton">Connect TON</button>
+      <button class="fbutton" type="button">Connect TON</button>
       <p class="security-description">We do not store seed phrases or private keys.</p>
       </div>
     </main>
@@ -32,6 +32,7 @@
           class="username-input"
           id="username-input"
           name="username"
+          aria-describedby="username-error"
           type="text"
           placeholder="username"
           autocomplete="off"
@@ -50,14 +51,69 @@
       <p class="wallet-assets">Assets</p>
       <div class="assets"></div>
       <p class="wallet-history">History</p>
-      <div class="history"></div>
-      <div class="buttons">
-        <button class="home-button active" type="button">Home</button>
-        <button class="send-button" type="button">Send</button>
-        <button class="receive-button" type="button">Receive</button>
+      <div class="history">Here is nothing :(</div>
+    </main>
+    <main class="wallet-card wallet-send" hidden>
+      <h1 class="send-head">Send TON</h1>
+      <div class="send-field">
+        <label class="send-label" for="send-input">To</label>
+        <input
+          class="send-input"
+          id="send-input"
+          name="send"
+          aria-describedby="send-error"
+          type="text"
+          placeholder="@username or wallet address"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+        >
+        <p class="send-error" id="send-error"></p>
+      </div>
+      <div class="amount-field">
+        <label class="amount-label" for="amount-input">Amount</label>
+        <input
+          class="amount-input"
+          id="amount-input"
+          name="amount"
+          aria-describedby="amount-error"
+          type="text"
+          placeholder="0.00"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+        >
+        <p class="amount-error" id="amount-error"></p>
+      </div>
+      <button class="ssend-button" type="button">Send</button>
+    </main>
+    <main class="wallet-card wallet-receive" hidden>
+      <h1 class="receive-head">Receive TON</h1>
+      <div class="receiveqr-field" id="receive-qr" aria-label="PayLink QR code"></div>
+      <div class="paylink-field">
+        <label class="paylink-label" for="paylink-input">PayLink</label>
+        <div class="paylink-box">
+          <input class="paylink-input" id="paylink-input" type="url" placeholder="Your PayLink" readonly>
+          <button class="paylink-copy-button" type="button">Copy</button>
+        </div>
+        <p class="paylink-message" id="paylink-message" aria-live="polite"></p>
       </div>
     </main>
-        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-    <script src="script.js?v=7"></script>
+      <div class="buttons">
+        <button class="home-button active" type="button">
+          <img class="nav-icon" src="images/home.png" alt="" aria-hidden="true">
+          <span>home</span>
+        </button>
+        <button class="send-button" type="button">
+          <img class="nav-icon" src="images/Strelka.png" alt="" aria-hidden="true">
+          <span>send</span>
+        </button>
+        <button class="receive-button" type="button">
+          <img class="nav-icon" src="images/Strelka.png" alt="" aria-hidden="true">
+          <span>receive</span>
+        </button>
+      </div>
+    <script src="https://unpkg.com/@tonconnect/ui@3.0.0/dist/tonconnect-ui.min.js"></script>
+    <script src="script.js?v=11"></script>
   </body>
 </html>

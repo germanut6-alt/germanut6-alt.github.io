@@ -1,3 +1,5 @@
+"use strict";
+
 const telegramApp = window.Telegram.WebApp;
 
 telegramApp.ready();
@@ -46,32 +48,74 @@ const connectButton = document.querySelector(".fbutton");
 const connectScreen = document.querySelector(".connect-screen");
 const usernameScreen = document.querySelector(".username-screen");
 const mainMenuScreen = document.querySelector(".main-menu");
+const sendScreen = document.querySelector(".wallet-send");
+const receiveScreen = document.querySelector(".wallet-receive");
+const navigationButtons = document.querySelectorAll(".buttons button");
+const homeNavigationButton = document.querySelector(".home-button");
+const sendNavigationButton = document.querySelector(".send-button");
+const receiveNavigationButton = document.querySelector(".receive-button");
+
+function setActiveNavigation(activeButton) {
+    navigationButtons.forEach(function (button) {
+        button.classList.remove("active");
+    });
+    activeButton.classList.add("active");
+}
 
 function showConnectScreen() {
     connectScreen.hidden = false;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = true;
+    sendScreen.hidden = true;
+    receiveScreen.hidden = true;
 }
 
 function showUsernameScreen() {
     connectScreen.hidden = true;
     usernameScreen.hidden = false;
     mainMenuScreen.hidden = true;
+    sendScreen.hidden = true;
+    receiveScreen.hidden = true;
 }
 
 function showMainMenuScreen() {
     connectScreen.hidden = true;
     usernameScreen.hidden = true;
     mainMenuScreen.hidden = false;
+    sendScreen.hidden = true;
+    receiveScreen.hidden = true;
+    setActiveNavigation(homeNavigationButton);
 }
 
-connectButton.addEventListener("click", function () {
-    tonConnectUI.openModal();
+function showSendScreen() {
+    connectScreen.hidden = true;
+    usernameScreen.hidden = true;
+    mainMenuScreen.hidden = true;
+    sendScreen.hidden = false;
+    receiveScreen.hidden = true;
+    setActiveNavigation(sendNavigationButton);
+}
+
+function showReceiveScreen() {
+    connectScreen.hidden = true;
+    usernameScreen.hidden = true;
+    mainMenuScreen.hidden = true;
+    sendScreen.hidden = true;
+    receiveScreen.hidden = false;
+    setActiveNavigation(receiveNavigationButton);
+}
+
+connectButton.addEventListener("click", async function () {
+    try {
+        await tonConnectUI.openModal();
+    } catch (error) {
+        console.error("Could not open TON Connect:", error);
+    }
 });
 
 function updateWalletScreen(wallet) {
     if (isLocalDevelopment) {
-        showMainMenuScreen();
+        showReceiveScreen();
         return;
     }
 
@@ -92,9 +136,14 @@ tonConnectUI.onStatusChange(
     }
 );
 
-tonConnectUI.connectionRestored.then(function () {
-    updateWalletScreen(tonConnectUI.wallet);
-});
+tonConnectUI.connectionRestored
+    .then(function () {
+        updateWalletScreen(tonConnectUI.wallet);
+    })
+    .catch(function (error) {
+        console.error("Could not restore TON Connect session:", error);
+        updateWalletScreen(null);
+    });
 
 const usernameInput = document.querySelector("#username-input");
 const usernameError = document.querySelector("#username-error");
@@ -144,15 +193,6 @@ continueButton.addEventListener("click", function () {
 
     showMainMenuScreen();
 });
-const navigationButtons =
-    document.querySelectorAll(".buttons button");
-
-navigationButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        navigationButtons.forEach(function (otherButton) {
-            otherButton.classList.remove("active");
-        });
-
-        button.classList.add("active");
-    });
-});
+homeNavigationButton.addEventListener("click", showMainMenuScreen);
+sendNavigationButton.addEventListener("click", showSendScreen);
+receiveNavigationButton.addEventListener("click", showReceiveScreen);
